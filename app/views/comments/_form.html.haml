@@ -1,4 +1,5 @@
 = form_with model: [@article, @comment] do |f|
-    = f.text_area :attr, placeholder: "Add comment"
+    = f.label :content
+    = f.text_area :content, placeholder: "Add comment"
     %br
     = f.submit
