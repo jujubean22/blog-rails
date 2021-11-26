@@ -17,6 +17,9 @@
                 <td> <%= article.author %> </td>
                 <td> <%= article.content.truncate(50) %> </td>
                 <td> 
+                <%= link_to article do %>  
+                Show
+                <% end %>
                 <%= link_to edit_article_path(article.id) do %>  
                 Edit
                 <% end %>
