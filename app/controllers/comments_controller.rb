@@ -14,6 +14,28 @@ class CommentsController < ApplicationController
         end
     end
 
+    def edit
+        @comment = @article.comments.find(params[:id])
+    end
+    
+    def update
+        @comment = @article.comments.find(params[:id])  
+
+        if @comment.update(comment_params)
+            redirect_to article_path(@article)
+        else
+            flash[:error] = 'Error encountered'
+            render :edit
+        end
+    end
+
+    def destroy
+        @comment = @article.comments.find(params[:id])
+    
+        @comment.destroy
+        redirect_to article_path(@article), notice: "A comment was successfully deleted"
+    end
+    
     private
 
     def set_article

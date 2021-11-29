@@ -1,4 +1,4 @@
- class ArticlesController < ApplicationController
+class ArticlesController < ApplicationController
     before_action :set_article, only: [:show, :edit, :update, :destroy]
     
     def index
@@ -10,7 +10,7 @@
     end
 
     def show
-        @comments = @article.comments
+        @comments = @article.comments.where.not(id: nil)
         @comment = @article.comments.build
     end
 
