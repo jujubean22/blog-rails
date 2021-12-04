@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
             redirect_to article_path(@article)
         else
             flash[:error] = 'Error encountered'
-            @comments = @article.comments
+            @comments = @article.comments.where.not(id: nil)
             render "articles/show"
         end
     end
